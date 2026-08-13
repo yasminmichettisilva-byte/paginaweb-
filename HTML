@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Interativo - Aprimorando Interfaces</title>
+  <style>
+    /* 1. VARIÁVEIS DE CORES (Tema Claro por padrão) */
+    :root {
+      --cor-fundo: #f4f4f9;
+      --cor-texto: #1c1c1c;
+      --cor-cartao: #ffffff;
+      --cor-primaria: #4a90e2;
+      --sombra: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 2. ESTILOS DO TEMA ESCURO */
+    body.tema-escuro {
+      --cor-fundo: #121212;
+      --cor-texto: #e0e0e0;
+      --cor-cartao: #1e1e1e;
+      --cor-primaria: #357abd;
+      --sombra: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    /* 3. ESTILOS GERAIS COM TRANSIÇÃO */
+    body {
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      /* Transição suave de cores ao trocar o tema */
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* 4. CABEÇALHO */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background-color: var(--cor-cartao);
+      box-shadow: var(--sombra);
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    /* 5. BOTÃO COM SOMBRA E INTERATIVIDADE */
+    button {
+      background-color: var(--cor-primaria);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: var(--sombra);
+      transition: transform 0.2s, box-shadow 0.2s, background-color 0.4s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 6. CONTEÚDO PRINCIPAL E CARTÕES */
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .cartao {
+      background-color: var(--cor-cartao);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: var(--sombra);
+      margin-bottom: 20px;
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .cartao h2 {
+      margin-top: 0;
+      color: var(--cor-primaria);
+    }
+
+    /* 7. RODAPÉ SEMÂNTICO */
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Estrutura Semântica HTML -->
+  <header>
+    <h1>Meu Blog de Estudos</h1>
+    <button onclick="mudaTema()">Alternar Tema</button>
+  </header>
+
+  <main>
+    <article class="cartao">
+      <h2>Aprimorando Interfaces Digitais</h2>
+      <p>Projeto desenvolvido na disciplina de Tecnologia. Aprendemos a usar manipulação de DOM em JavaScript, transições visuais com CSS e elementos semânticos de HTML.</p>
+    </article>
+
+    <article class="cartao">
+      <h2>Recursos Utilizados</h2>
+      <p>Utilizamos <code>classList.contains()</code> para checar o tema atual, <code>box-shadow</code> para criar profundidade nos botões e cartões, e <code>transition</code> para deixar a troca de tela agradável para a vista.</p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Projeto do 1º Ano do Ensino Médio</p>
+  </footer>
+
+  <!-- Lógica JavaScript -->
+  <script>
+    function mudaTema() {
+      const corpoPagina = document.body;
+
+      // Verifica se a classe tema-escuro existe
+      if (corpoPagina.classList.contains("tema-escuro")) {
+        // Se existir, remove (volta ao claro)
+        corpoPagina.classList.remove("tema-escuro");
+      } else {
+        // Se não existir, adiciona (ativa o escuro)
+        corpoPagina.classList.add("tema-escuro");
+      }
+    }
+  </script>
+</body>
+</html>
